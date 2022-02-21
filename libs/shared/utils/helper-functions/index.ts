@@ -9,3 +9,10 @@ export function compareByDate(reportA: IReport, reportB: IReport) {
   }
   return 0;
 }
+
+export const getSumTotal = (list: number[]): number => {
+  return list.reduce(
+    (partialSum: number, currentItem: number) => partialSum + currentItem,
+    0
+  );
+};

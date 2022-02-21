@@ -24,7 +24,7 @@ export const StyledButton = styled.div<IButtonProps>`
 
   padding: 8px 10px;
   height: 32px;
-  width: 120px;
+  width: auto;
 `;
 
 export const RegularButton = ({

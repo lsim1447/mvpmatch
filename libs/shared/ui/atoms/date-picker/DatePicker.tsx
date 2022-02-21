@@ -19,7 +19,7 @@ export const StyledDateInput = styled.input`
   text-align: center;
 
   height: 32px;
-  width: 180px;
+  width: 150px;
   padding: 8px 10px;
 
   ::-webkit-calendar-picker-indicator {

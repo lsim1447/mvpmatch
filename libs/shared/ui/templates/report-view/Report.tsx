@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import styled from 'styled-components';
 
 import { GatewayContext } from '../../../utils/context/GatewayContext';
@@ -16,6 +17,7 @@ import {
   getGatewayTotalAmountById
 } from '../../../services/Gateway';
 import { DEFAULT_COLORS } from '../../../utils/constants';
+import { getSumTotal } from '../../../utils/helper-functions';
 import { ColorSquare } from '../../atoms/icons';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -144,7 +146,25 @@ const Report = ({
     );
   };
 
-  let chartData = getChartData(Boolean(projectId && !gatewayId));
+  const chartData = getChartData(Boolean(projectId && !gatewayId));
+
+  const chartOptions = {
+    plugins: {
+      datalabels: {
+        color: '#ffffff',
+        display: (ctx: any) => {
+          return true;
+        },
+        formatter: (ctx: any, data: any) => {
+          const currentItem = data.dataset.data[data.dataIndex];
+          const totalSum = getSumTotal(data.dataset.data);
+          const percentage = Math.round((currentItem / totalSum) * 100);
+
+          return `${percentage}%`;
+        }
+      }
+    }
+  };
 
   return (
     <ReportContainer>
@@ -154,7 +174,11 @@ const Report = ({
 
       <ChartWrapper>
         <ChartContainer>
-          <Doughnut data={chartData} />
+          <Doughnut
+            data={chartData}
+            plugins={[ChartDataLabels]}
+            options={chartOptions}
+          />
         </ChartContainer>
       </ChartWrapper>
 
