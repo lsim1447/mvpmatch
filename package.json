@@ -1,0 +1,53 @@
+{
+  "name": "mvpmatch",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "cz": "cz",
+    "formatter:fix": "prettier --write --ignore-unknown --config ./.prettierrc --ignore-path ./.prettierignore",
+    "log:pre-commit-message": "echo 'Prettier was run against the staged git files to improve code quality. The changes have been added to the original commit.'"
+  },
+  "dependencies": {
+    "@types/react-chartjs-2": "^2.5.7",
+    "@types/styled-components": "^5.1.23",
+    "chart.js": "^3.7.1",
+    "next": "12.0.10",
+    "react": "17.0.2",
+    "react-chartjs-2": "^4.0.1",
+    "react-dom": "17.0.2",
+    "react-dropdown": "^1.9.2",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.18",
+    "@types/react": "17.0.39",
+    "commitizen": "4.2.3",
+    "cz-customizable": "6.3.0",
+    "dotenv": "10.0.0",
+    "eslint": "8.9.0",
+    "eslint-config-next": "12.0.10",
+    "husky": "4.3.0",
+    "lint-staged": "10.4.0",
+    "prettier": "2.4.1",
+    "typescript": "4.5.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./cz-config.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "(git rev-parse -q --no-revs --verify MERGE_HEAD || lint-staged) && yarn log:pre-commit-message"
+    }
+  },
+  "lint-staged": {
+    "*.{md,html,css,json,ts,tsx,js,jsx}": "yarn formatter:fix"
+  }
+}
