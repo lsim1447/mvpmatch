@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
-type DatePickerProps = {
-  value: string;
-  onChange: any;
-};
-
-export const StyledDateInput = styled.input`
+const StyledDateInput = styled.input`
   float: right;
 
   background: #1bc5bd;
@@ -26,6 +21,11 @@ export const StyledDateInput = styled.input`
     filter: invert(1);
   }
 `;
+
+type DatePickerProps = {
+  value: string;
+  onChange: any;
+};
 
 export const DatePicker = ({ value, onChange }: DatePickerProps) => (
   <StyledDateInput type="date" value={value} onChange={onChange} />

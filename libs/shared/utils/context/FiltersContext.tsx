@@ -1,4 +1,8 @@
 import React, { useState, FC } from 'react';
+interface IDropdown {
+  value: string;
+  label: string;
+}
 
 type FiltersContextProps = {
   selectedProject: IDropdown;
@@ -10,11 +14,6 @@ type FiltersContextProps = {
   toDate: string;
   setToDate: React.Dispatch<React.SetStateAction<string>>;
 };
-
-interface IDropdown {
-  value: string;
-  label: string;
-}
 
 export const FiltersContext = React.createContext<FiltersContextProps>({
   selectedProject: {
@@ -43,7 +42,7 @@ export const FiltersProvider: FC = ({ children }) => {
     label: 'All gateways'
   });
   const [fromDate, setFromDate] = useState<string>('2021-01-01');
-  const [toDate, setToDate] = useState<string>('2021-04-31');
+  const [toDate, setToDate] = useState<string>('2021-04-30');
 
   return (
     <FiltersContext.Provider
