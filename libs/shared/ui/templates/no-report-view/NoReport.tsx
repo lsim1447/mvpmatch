@@ -18,8 +18,8 @@ const NoReportsMessage = styled.div`
   color: #7e8299;
   font-size: 16px;
   font-weight: 700;
-  padding-left: 37%;
-  padding-right: 37%;
+  padding-left: 36%;
+  padding-right: 36%;
   padding-bottom: 50px;
   text-align: center;
 `;
@@ -33,7 +33,7 @@ export const NoReport = () => (
       </p>
       <p style={{ margin: 0 }}>
         Once you start generating traffic through the Balance application the
-        reports will be shown
+        reports will be shown.
       </p>
     </NoReportsMessage>
     <NoReportsIcon />
