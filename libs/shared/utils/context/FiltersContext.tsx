@@ -43,7 +43,7 @@ export const FiltersProvider: FC = ({ children }) => {
     label: 'All gateways'
   });
   const [fromDate, setFromDate] = useState<string>('2021-01-01');
-  const [toDate, setToDate] = useState<string>('2021-12-31');
+  const [toDate, setToDate] = useState<string>('2021-04-31');
 
   return (
     <FiltersContext.Provider
